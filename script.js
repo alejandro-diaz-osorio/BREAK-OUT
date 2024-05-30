@@ -57,21 +57,20 @@ const BRICK_STATUS = {
   ACTIVE: 0,
 };
 //RANDOM COLORS
+
 function makingRandomColors() {
-  let range = 256 / 16;
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
 
-  let r = Math.floor(Math.random() * 16) * range;
-  let g = Math.floor(Math.random() * 16) * range;
-  let b = Math.floor(Math.random() * 16) * range;
-
-  let colorHex =
+  const colorHex =
     "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 
   return colorHex;
 }
 
 function componentToHex(c) {
-  let hex = c.toString(16);
+  const hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
 }
 

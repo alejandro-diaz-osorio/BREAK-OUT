@@ -2,7 +2,6 @@
 
 **BREAK OUT** es una recreación del clásico videojuego arcade en el que el jugador controla una paleta para hacer rebotar una pelota y destruir una serie de bloques. Este proyecto ha sido desarrollado usando **HTML5**, **CSS3**, y **JavaScript** puro sin librerías externas.
 
-> .[!NOTE].
 > Basado en el proyecto de Arkanoid de Midudev en su serie de "100 proyectos de JavaScript"
 
 

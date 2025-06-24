@@ -33,8 +33,4 @@ Este proyecto no necesita instalación ni dependencias externas. Solo se requier
 
 ## 📄 Licencia
 
-Este proyecto puede ser utilizado con fines educativos, personales o como base para proyectos propios.
-
----
-
-¡Disfruta creando tu propia versión de Breakout!
+Este proyecto está bajo la licencia [MIT](LICENSE).

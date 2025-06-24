@@ -174,7 +174,6 @@ function ballMovement() {
   //Ball Movement
   ballX += ballDirectionX;
   ballY += ballDirectionY;
-  /* console.log("Posición en X:", ballX, "\nPosición en Y: ",ballY) */
 }
 
 function paddleMovement() {

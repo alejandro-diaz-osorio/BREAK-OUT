@@ -4,20 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Break-Out</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
-    <div class="btn container">
-      <button class="btn start" onclick="start()">START</button>
-      <button class="btn stop" onclick="stop()">STOP</button>
-    </div>
-    <canvas></canvas>
+    <main class="game-layout">
+      <div class="btn container" aria-label="Controles de partida">
+        <button class="btn start" type="button">START</button>
+        <button class="btn stop" type="button">STOP</button>
+      </div>
 
-    <div class="info container">
-      <div id="score-title">SCORE:</div>
-      <p id="points">0</p>
-    </div>
+      <section class="game-area" aria-label="Juego Breakout">
+        <canvas aria-label="Tablero del juego Breakout"></canvas>
+        <div class="touch-controls" aria-label="Controles táctiles">
+          <button class="touch-control left" type="button" aria-label="Mover paleta a la izquierda">&larr;</button>
+          <button class="touch-control right" type="button" aria-label="Mover paleta a la derecha">&rarr;</button>
+        </div>
+      </section>
+
+      <div class="info container">
+        <div id="score-title">SCORE:</div>
+        <p id="points" aria-live="polite">0</p>
+        <p id="status" aria-live="polite">Pulsa START para jugar</p>
+      </div>
+    </main>
   </body>
   <script src="./script.js"></script>
 </html>

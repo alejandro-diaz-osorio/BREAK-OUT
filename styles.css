@@ -2,6 +2,22 @@ body {
   background-color: #0f0f0f;
   display: flex;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) minmax(0, 550px) minmax(110px, 1fr);
+  align-items: center;
+  gap: 16px;
+  width: min(100% - 24px, 1000px);
+}
+
+.game-area {
+  min-width: 0;
 }
 
 canvas {
@@ -9,6 +25,9 @@ canvas {
   border-bottom: transparent;
   margin: 0 auto;
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 550 / 620;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
 }
 
@@ -18,7 +37,7 @@ canvas {
 }
 
 .btn.container {
-  margin-left: 0;
+  margin: 0;
 }
 
 .btn {
@@ -54,4 +73,69 @@ canvas {
   font-size: 24px;
   font-weight: bold;
   color: #fff;
+}
+
+.info p {
+  margin: 8px 0;
+}
+
+#status {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.touch-controls {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.touch-control {
+  padding: 12px;
+  font-size: 28px;
+  border: 0;
+  border-radius: 8px;
+  touch-action: none;
+  user-select: none;
+}
+
+@media (max-width: 760px) {
+  body {
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: min(100% - 24px, 550px);
+  }
+
+  .btn.container,
+  .info.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 18px;
+  }
+
+  .info.container {
+    flex-wrap: wrap;
+    font-size: 20px;
+  }
+
+  #status {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .touch-controls {
+    display: grid;
+  }
 }

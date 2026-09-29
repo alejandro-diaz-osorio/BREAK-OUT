@@ -1,5 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --ink: #080b18;
+  --panel: #10162b;
+  --panel-light: #182342;
+  --cyan: #8ab9bd;
+  --pink: #bd789c;
+  --yellow: #d2bc76;
+  --white: #f3f7ff;
+  --muted: #8b9aba;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #0f0f0f;
+  background-color: var(--ink);
+  background-image: linear-gradient(rgba(138, 185, 189, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 185, 189, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 35%, #202b56 0, var(--ink) 56%);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+  color: var(--white);
+  font-family: "Space Mono", "Courier New", monospace;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +35,27 @@ body {
   display: grid;
   grid-template-columns: minmax(110px, 1fr) minmax(0, 550px) minmax(110px, 1fr);
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   width: min(100% - 24px, 1000px);
+}
+
+.game-header {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 8px 0 0;
+}
+
+h1 {
+  margin: 0;
+  color: var(--white);
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 42px;
+  line-height: 1.15;
+  text-shadow: 3px 3px 0 #5b3d55;
+}
+
+h1 span {
+  color: var(--cyan);
 }
 
 .game-area {
@@ -21,14 +63,14 @@ body {
 }
 
 canvas {
-  background-color: #f0f0f0;
-  border-bottom: transparent;
+  background-color: #080d20;
+  border: 2px solid var(--cyan);
   margin: 0 auto;
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 550 / 620;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 3px rgba(138, 185, 189, 0.08), 0 0 18px rgba(138, 185, 189, 0.16);
 }
 
 .container {
@@ -41,46 +83,72 @@ canvas {
 }
 
 .btn {
-  padding: 16px 32px;
+  padding: 14px 20px;
   margin: 5px;
-  font-size: 24px;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 12px;
   font-weight: bold;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid var(--cyan);
+  border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.start:hover {
-  background-color: #3498db;
+.btn:hover,
+.btn:focus-visible,
+.touch-control:hover,
+.touch-control:focus-visible {
+  transform: translateY(-2px);
+  outline: none;
 }
 
-.stop:hover {
-  background-color: #3498db;
+.start:hover,
+.start:focus-visible {
+  background-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(138, 185, 189, 0.28);
 }
 
 .start {
-  background-color: #2ecc71;
-  color: #fff;
+  background-color: rgba(138, 185, 189, 0.1);
+  color: var(--cyan);
+}
+
+.stop:hover,
+.stop:focus-visible {
+  background-color: var(--pink);
+  box-shadow: 0 0 10px rgba(189, 120, 156, 0.28);
 }
 
 .stop {
-  background-color: #e74c3c;
-  color: #fff;
+  border-color: var(--pink);
+  background-color: rgba(189, 120, 156, 0.1);
+  color: var(--pink);
 }
 
 .info.container {
-  font-size: 24px;
+  padding: 18px 14px;
+  border: 1px solid var(--panel-light);
+  border-left: 3px solid var(--yellow);
+  background: rgba(16, 22, 43, 0.84);
+  font-size: 13px;
   font-weight: bold;
-  color: #fff;
+  color: var(--white);
+  text-transform: uppercase;
 }
 
 .info p {
-  margin: 8px 0;
+  margin: 10px 0;
+}
+
+#points {
+  color: var(--yellow);
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 25px;
 }
 
 #status {
-  font-size: 14px;
+  color: var(--muted);
+  font-size: 11px;
   font-weight: normal;
 }
 
@@ -93,11 +161,15 @@ canvas {
 
 .touch-control {
   padding: 12px;
-  font-size: 28px;
-  border: 0;
-  border-radius: 8px;
+  color: var(--cyan);
+  background: var(--panel);
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 20px;
+  border: 1px solid var(--cyan);
+  border-radius: 2px;
   touch-action: none;
   user-select: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 @media (max-width: 760px) {
@@ -122,7 +194,7 @@ canvas {
 
   .btn {
     padding: 10px 18px;
-    font-size: 18px;
+    font-size: 10px;
   }
 
   .info.container {
@@ -137,5 +209,13 @@ canvas {
 
   .touch-controls {
     display: grid;
+  }
+
+  .game-header {
+    padding-top: 0;
+  }
+
+  h1 {
+    font-size: 30px;
   }
 }

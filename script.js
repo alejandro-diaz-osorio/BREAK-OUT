@@ -42,10 +42,8 @@ let isLeftPressed = false;
 const bricks = [];
 
 function makingRandomColors() {
-  const red = Math.floor(Math.random() * 256);
-  const green = Math.floor(Math.random() * 256);
-  const blue = Math.floor(Math.random() * 256);
-  return `#${componentToHex(red)}${componentToHex(green)}${componentToHex(blue)}`;
+  const colors = ["#6f9da2", "#a96588", "#c0a964", "#77749b"];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function componentToHex(component) {
@@ -102,22 +100,31 @@ function stop() {
 function drawBall() {
   ctx.beginPath();
   ctx.arc(ballX, ballY, BALL_RADIUS, 0, Math.PI * 2);
-  ctx.fillStyle = "#f00";
+  ctx.shadowColor = "#dfe8ed";
+  ctx.shadowBlur = 6;
+  ctx.fillStyle = "#ffffff";
   ctx.fill();
+  ctx.shadowBlur = 0;
   ctx.closePath();
 }
 
 function drawPaddle() {
-  ctx.fillStyle = "#000";
+  ctx.shadowColor = "#8ab9bd";
+  ctx.shadowBlur = 7;
+  ctx.fillStyle = "#8ab9bd";
   ctx.fillRect(paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+  ctx.shadowBlur = 0;
 }
 
 function drawBricks() {
   bricks.forEach((column) => {
     column.forEach((brick) => {
       if (brick.status === BRICK_STATUS.DESTROYED) return;
+      ctx.shadowColor = brick.color;
+      ctx.shadowBlur = 3;
       ctx.fillStyle = brick.color;
       ctx.fillRect(brick.x, brick.y, BRICK_WIDTH, BRICK_HEIGHT);
+      ctx.shadowBlur = 0;
     });
   });
 }
